@@ -1,7 +1,14 @@
 const express = require("express");
 const path = require("path");
+const members = require("./members");
 const app = express();
 
+const logger=(req,res,next)=>{
+    console.log('hello')
+    next()
+}
+//init middlware
+app.use(logger)
 
 //get all members
 app.get("/api/members", (req, res) => {
