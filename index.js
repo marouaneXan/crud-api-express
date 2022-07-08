@@ -1,12 +1,9 @@
 const express = require("express");
 const path = require("path");
 const members = require("./members");
+const logger = require("./middleware/logger");
 const app = express();
 
-const logger=(req,res,next)=>{
-    console.log('hello')
-    next()
-}
 //init middlware
 app.use(logger)
 
