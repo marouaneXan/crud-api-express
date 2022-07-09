@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const path = require("path");
 // const logger = require("./middleware/logger");
 const app = express();
@@ -6,13 +6,12 @@ const app = express();
 //init middlware
 // app.use(logger)
 
+// Body Parser Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
+
 //API members
 app.use("/api/members", require("./routes/api/members"));
-
-//body parser middleware
-const bodyParser = require('body-parser')
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
 //set static folder
 app.use(express.static(path.join(__dirname, "public")));
