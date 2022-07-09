@@ -27,7 +27,20 @@ router.post("/", (req, res) => {
   }
 
   members.push(newMember);
-  res.json(members);
+  res.json({msg:'member created successfully'});
 });
+
+
+//Update member
+router.put('/:id',(req,res)=>{
+    const updateMember=req.body
+    members.forEach(member=>{
+        if(member.id===parseInt(req.params.id)){
+            member.name=updateMember.name
+            member.email=updateMember.email
+        }
+        res.json({msg:'member updated successfully'})
+    })
+})
 
 module.exports = router;
