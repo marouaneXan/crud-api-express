@@ -7,13 +7,12 @@ const app = express();
 // app.use(logger)
 
 //API members
-app.use('/api/members',require('./routes/api/members'))
-
+app.use("/api/members", require("./routes/api/members"));
 
 //body parser middleware
-app.use(express.json())
-app.use(express.urlencoded({extended:false}))
-
+const bodyParser = require('body-parser')
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 //set static folder
 app.use(express.static(path.join(__dirname, "public")));
