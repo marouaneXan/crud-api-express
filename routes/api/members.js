@@ -43,4 +43,9 @@ router.put('/:id',(req,res)=>{
     })
 })
 
+//delete member
+router.delete('/:id',(req,res)=>{
+    res.json(memner.filter({msg:'member deletd'},member=>member.id!==parseInt(req.params.id)))
+})
+
 module.exports = router;
