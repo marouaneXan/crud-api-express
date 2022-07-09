@@ -27,25 +27,29 @@ router.post("/", (req, res) => {
   }
 
   members.push(newMember);
-  res.json({msg:'member created successfully'});
+  res.json({ msg: "member created successfully" });
 });
 
-
 //Update member
-router.put('/:id',(req,res)=>{
-    const updateMember=req.body
-    members.forEach(member=>{
-        if(member.id===parseInt(req.params.id)){
-            member.name=updateMember.name
-            member.email=updateMember.email
-        }
-        res.json({msg:'member updated successfully'})
-    })
-})
+router.put("/:id", (req, res) => {
+  const updateMember = req.body;
+  members.forEach((member) => {
+    if (member.id === parseInt(req.params.id)) {
+      member.name = updateMember.name;
+      member.email = updateMember.email;
+    }
+    res.json({ msg: "member updated successfully" });
+  });
+});
 
 //delete member
-router.delete('/:id',(req,res)=>{
-    res.json(memner.filter({msg:'member deletd'},member=>member.id!==parseInt(req.params.id)))
-})
+router.delete("/:id", (req, res) => {
+  res.json(
+    {
+      msg: "member deletd",
+      members:members.filter((member)=>member.id !== parseInt(req.params.id)),
+    }
+  );
+});
 
 module.exports = router;
