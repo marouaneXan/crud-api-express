@@ -1,15 +1,16 @@
-const express = require('express');
+const express = require("express");
 const path = require("path");
+var exphbs = require("express-handlebars");
+const logger = require("./middleware/logger");
 const app = express();
-const exphbs=require('express-handlebars')
 
 //Handle bars middleware
-app.engine('handlebars',exphbs({defaltLayout:'main'}))
-app.set('view engine','handlebars')
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 // Body Parser Middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
 
 //API members
 app.use("/api/members", require("./routes/api/members"));
